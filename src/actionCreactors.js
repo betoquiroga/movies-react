@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 export const addFavorite = movie => {
   return {
     type : 'ADD_FAVORITES',
@@ -11,3 +13,12 @@ export const removeFavorite = favorite => {
     favorite
   }
 }
+
+export const loadMovies = () => dispatch =>
+  axios.get('http://localhost:3002/movies')
+    .then(response => {
+      dispatch({
+        type : 'LOAD_MOVIES',
+        movies : response.data
+      })
+    })
