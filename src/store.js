@@ -1,5 +1,6 @@
 import {applyMiddleware, createStore} from "redux"
 import {logger} from "redux-logger"
+import thunk from "redux-thunk"
 
 const initialState = {
   favorites: [],
@@ -32,4 +33,4 @@ const reducer = (prevState, action) => {
   return prevState
 }
 
-export default createStore(reducer, initialState, applyMiddleware(logger))
+export default createStore(reducer, initialState, applyMiddleware(logger, thunk))
