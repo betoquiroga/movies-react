@@ -57,7 +57,12 @@ class Favorites extends Component {
     );
   }
 
-  removeFavorite(){}
+  removeFavorite(favorite){
+    store.dispatch({
+      type: 'REMOVE_FAVORITE',
+      favorite
+    })
+  }
 
 }
 

@@ -12,6 +12,12 @@ const reducer = (prevState, action) => {
       favorites: prevState.favorites.concat(action.movie)
     }
   }
+  if(action.type === 'REMOVE_FAVORITE') {
+    return {
+      ...prevState,
+      favorites : prevState.favorites.filter(fav => fav.id !== action.favorite.id)
+    }
+  }
 
   return prevState
 }
