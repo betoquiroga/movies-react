@@ -1,4 +1,4 @@
-import {createStore} from "redux"
+import {applyMiddleware, createStore} from "redux"
 
 const initialState = {
   favorites: [],
@@ -32,4 +32,11 @@ const reducer = (prevState, action) => {
   return prevState
 }
 
-export default createStore(reducer, initialState)
+const logger = store => next => action => {
+  let result = next(action)
+  console.log("Se disparó una acción:", action)
+  console.log("El estado ahora será", store.getState())
+  return result
+}
+
+export default createStore(reducer, initialState, applyMiddleware(logger))
