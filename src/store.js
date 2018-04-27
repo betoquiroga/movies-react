@@ -1,4 +1,5 @@
 import {applyMiddleware, createStore} from "redux"
+import {logger} from "redux-logger"
 
 const initialState = {
   favorites: [],
@@ -28,15 +29,7 @@ const reducer = (prevState, action) => {
       favorites : prevState.favorites.filter(fav => fav.id !== action.favorite.id)
     }
   }
-
   return prevState
-}
-
-const logger = store => next => action => {
-  let result = next(action)
-  console.log("Se disparó una acción:", action)
-  console.log("El estado ahora será", store.getState())
-  return result
 }
 
 export default createStore(reducer, initialState, applyMiddleware(logger))
