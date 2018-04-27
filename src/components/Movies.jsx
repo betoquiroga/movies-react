@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import store from '../store'
 
 class Movies extends Component {
 
@@ -21,7 +22,6 @@ class Movies extends Component {
     this.addFavorite = this.addFavorite.bind(this);
 
   }
-
 
   render() {
     return (
@@ -56,6 +56,10 @@ class Movies extends Component {
   }
 
   addFavorite(movie) {
+    store.dispatch({
+      type : 'ADD_FAVORITES',
+      movie
+    })
   }
 
 }

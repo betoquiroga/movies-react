@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import store from '../store'
 
 
 class Favorites extends Component {
@@ -11,6 +12,12 @@ class Favorites extends Component {
     }
 
     this.removeFavorite = this.removeFavorite.bind(this);
+
+    store.subscribe(() => {
+      this.setState({
+        favorites: store.getState().favorites
+      })
+    })
   }
 
   render() {
@@ -50,7 +57,7 @@ class Favorites extends Component {
     );
   }
 
-  removeFavorite(favorite){}
+  removeFavorite(){}
 
 }
 
