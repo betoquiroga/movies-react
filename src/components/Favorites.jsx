@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import store from '../store'
+import {removeFavorite} from "../actionCreactors"
 
 
 class Favorites extends Component {
@@ -58,10 +59,7 @@ class Favorites extends Component {
   }
 
   removeFavorite(favorite){
-    store.dispatch({
-      type: 'REMOVE_FAVORITE',
-      favorite
-    })
+    store.dispatch(removeFavorite(favorite))
   }
 
 }

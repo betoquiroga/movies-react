@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import store from '../store'
+import {addFavorite} from "../actionCreactors"
 
 class Movies extends Component {
 
@@ -56,10 +57,7 @@ class Movies extends Component {
   }
 
   addFavorite(movie) {
-    store.dispatch({
-      type : 'ADD_FAVORITES',
-      movie
-    })
+    store.dispatch(addFavorite(movie))
   }
 
 }
